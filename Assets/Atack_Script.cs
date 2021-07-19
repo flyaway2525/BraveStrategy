@@ -27,7 +27,7 @@ public class Atack_Script : MonoBehaviour
     private void OnTriggerEnter(Collider _collider) {
         if (_collider.gameObject.tag == "Player") {
             Debug.Log("攻撃判定");
-            //_collider.gameObject.GetComponent<BasicStatus>().hp -= 100;
+            _collider.gameObject.GetComponent<BasicStatus>().hp -= 100;
 
         }
     }

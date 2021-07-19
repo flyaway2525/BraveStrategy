@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +6,12 @@ public class Enemy_Sample : Enemy_Status
 {
     public override void Start() {
         base.Start();
-        //_targetController.Enemy_Object = this.gameObject;//ƒ^ƒO•t‚¯‚µ‚ÄˆêŠ‡‚ÅTC‚É‘—‚è‚½‚¢‚Ë
-        _targetController.Enemy_Script = this;//ƒ^ƒO•t‚¯‚µ‚ÄˆêŠ‡‚ÅTC‚É‘—‚è‚½‚¢‚Ë     
+        //_targetController.Enemy_Object = this.gameObject;//ã‚¿ã‚°ä»˜ã‘ã—ã¦ä¸€æ‹¬ã§TCã«é€ã‚ŠãŸã„ã­
+        _targetController.Enemy_Script = this;//ã‚¿ã‚°ä»˜ã‘ã—ã¦ä¸€æ‹¬ã§TCã«é€ã‚ŠãŸã„ã­     
     }
     public override IEnumerator FastSkill() {
         base.FastSkill();
-        if (true) {//ƒvƒŒƒCƒ„[‚É“Å‚ğ—^‚¦‚é
+        if (true) {//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«æ¯’ã‚’ä¸ãˆã‚‹
             foreach(Player_Status _player_Status in _targetController.Player_Scripts) {
                 _player_Status.gameObject.AddComponent<Poison>();
                 Debug.Log(_player_Status + " was get poison!");
@@ -39,6 +39,7 @@ public class Enemy_Sample : Enemy_Status
         material.color = Color.green;
         yield return new WaitForSeconds(0.4f);
         material.color = c;
+        StartCoroutine("Atack");
         Debug.Log(gameObject + " : Turn over");
         /*
         Debug.Log(this.gameObject.name + " : your turn!");
@@ -54,7 +55,21 @@ public class Enemy_Sample : Enemy_Status
         return base.EndSkill();
     }
     private IEnumerator Atack() {
+        GameObject bullet = Instantiate(enemyBullets.bullet);
+        bullet.transform.position = this.transform.position;
+        bullet.transform.position += Vector3.down;
+        yield return new WaitForSeconds(0.3f);
+        GameObject bullet2 = Instantiate(enemyBullets.bullet);
+        bullet2.transform.position = this.transform.position;
+        bullet2.transform.position += Vector3.down * 2;
+        yield return new WaitForSeconds(0.3f);
+        GameObject bullet3 = Instantiate(enemyBullets.bullet);
+        bullet3.transform.position = this.transform.position;
+        bullet3.transform.position += Vector3.down * 3;
+        yield return new WaitForSeconds(0.3f);
+        GameObject bullet4 = Instantiate(enemyBullets.bullet);
+        bullet4.transform.position = this.transform.position;
+        bullet4.transform.position += Vector3.down * 4;
 
-        return null;
     }
 }

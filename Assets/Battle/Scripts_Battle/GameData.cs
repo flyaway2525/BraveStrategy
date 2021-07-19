@@ -23,19 +23,6 @@ public class GameData : MonoBehaviour
             combat();
         }
     }
-    /* データ保存技術
-    public void ChangePTHP(string PTname, int PTHpAdd) {
-        if (PlayerPrefs.HasKey(PTname)) {
-            string name = PlayerPrefs.GetString(PTname);
-            int Hp = PlayerPrefs.GetInt("HP") + PTHpAdd;
-            PlayerPrefs.SetInt("HP", Hp);
-
-            Debug.Log(PlayerPrefs.GetString("PT") + "  " + PlayerPrefs.GetInt("HP"));
-        } else {
-            Debug.Log(PTname + " is Nothing");
-        }
-    }
-    */
     public void PreAction() {
         //Passiveのルール
         /***
@@ -52,18 +39,16 @@ public class GameData : MonoBehaviour
         foreach (All_Status _script in _allStatus) { _script.passive_Third(); }
     }
     public void combat() {
-        _ground_Controller.touchOffCollider.enabled = true;
+        CanMove(false);
         _ground_Controller.turnPlayer = false;
         StartCoroutine("Enemy_FastSkill");
-        _ground_Controller.touchOffCollider.enabled =false;
         _ground_Controller.turnPlayer = true;
-        canMove = true;
+        CanMove(true);
         //playerTrunが始まる      条件　Playerを触ったら
 
     }
     public IEnumerator Player_Turn() {
         if (canMove) {
-            canMove = false;
             Debug.Log("3");
             yield return new WaitForSeconds(1.0f);
             Debug.Log("2");
@@ -72,7 +57,7 @@ public class GameData : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             Debug.Log("0");
             player_Turn = false;
-            _ground_Controller.Selected_Ground.OnPointerUp();
+            //_ground_Controller.Selected_Ground.OnPointerUp();
             _ground_Controller.turnPlayer = false;
             Debug.Log("Enemy_Trun");
             StartCoroutine("Enemy_Trun");
@@ -83,9 +68,7 @@ public class GameData : MonoBehaviour
             IEnumerator c = enemy_script.OnTurn();
             StartCoroutine(c);
         }
-        _ground_Controller.touchOffCollider.enabled = true;
         StartCoroutine("Enemy_EndSkill");
-        canMove = true;
         yield return null;
     }
     public IEnumerator Enemy_FastSkill() {
@@ -95,12 +78,21 @@ public class GameData : MonoBehaviour
         }
         yield return null;
     }
-    public IEnumerator Enemy_EndSkill() {
+    public IEnumerator Enemy_EndSkill() {    
+        CanMove(false);
         foreach (Enemy_Status enemy_script in _targetController.Enemy_Scripts) {
             IEnumerator c = enemy_script.EndSkill();
             StartCoroutine(c);
         }
-        _ground_Controller.touchOffCollider.enabled = false;
+        CanMove(true);
         yield return null;
+    }
+
+    public void CanMove(bool TF) {
+        _ground_Controller.touchOffCollider.enabled = !TF;
+        if (!TF && _ground_Controller.Selected_Ground) {
+            _ground_Controller.Selected_Ground.OnPointerUp();//強制的にタッチを解除
+        }
+        canMove = TF;
     }
 }

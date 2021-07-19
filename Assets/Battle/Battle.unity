@@ -163,7 +163,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70740219}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -175,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 42d65fef45e57a44fbeba818d0083f68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -309,6 +309,7 @@ MonoBehaviour:
   _targetController: {fileID: 4043632855533131685}
   gameData: {fileID: 0}
   showInfo: {fileID: 11400000, guid: 61c36f3a0e0530a4aae1ef51b7060daa, type: 2}
+  enemyBullets: {fileID: 11400000, guid: 52584a77de69cf844bc16fa180deab43, type: 2}
   status: {fileID: 181247261}
   type: Human
   MaxHP: 500
@@ -382,6 +383,7 @@ MonoBehaviour:
   _targetController: {fileID: 4043632855533131685}
   gameData: {fileID: 0}
   showInfo: {fileID: 11400000, guid: 61c36f3a0e0530a4aae1ef51b7060daa, type: 2}
+  enemyBullets: {fileID: 0}
   status: {fileID: 181247262}
   type: Human
   MaxHP: 200
@@ -433,6 +435,7 @@ MonoBehaviour:
   _targetController: {fileID: 4043632855533131685}
   gameData: {fileID: 0}
   showInfo: {fileID: 11400000, guid: 61c36f3a0e0530a4aae1ef51b7060daa, type: 2}
+  enemyBullets: {fileID: 0}
   status: {fileID: 181247264}
   type: Human
   MaxHP: 500
@@ -1018,6 +1021,7 @@ MonoBehaviour:
   _targetController: {fileID: 0}
   gameData: {fileID: 0}
   showInfo: {fileID: 0}
+  enemyBullets: {fileID: 0}
   owner: {fileID: 0}
   status: {fileID: 0}
   targetController: {fileID: 0}

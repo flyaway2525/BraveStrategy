@@ -7,6 +7,7 @@ public class All_Status : MonoBehaviour
     public TargetController _targetController;
     public GameData gameData;
     public SO_ShowInfo showInfo;
+    public EnemyBullets enemyBullets;
     //すべてを統括するオブジェクトクラス！
     /***
      *  Character_StatusとItem_Statusを共存させたクラス
