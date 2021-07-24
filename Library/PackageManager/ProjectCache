@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637626934257362897
+      ticks: 637626956242870842
     m_Hash: 248146433
   m_LockFileStatus:
     m_FilePath: D:/SourceTree/BraveStrategy/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637626934257382902
+      ticks: 637626956242890854
     m_Hash: 2564801494
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

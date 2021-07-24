@@ -1,0 +1,4 @@
+﻿TextMeshProはttf otfが使えないのでFontAssetを作る必要がある
+作り方参考下
+https://qiita.com/thorikawa/items/03b65b75fa9461b53efd
+https://qiita.com/kgsi/items/08a1c78b3bee71136156
