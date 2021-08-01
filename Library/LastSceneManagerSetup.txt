@@ -1,5 +1,5 @@
 sceneSetups:
-- path: D:/SourceTree/BraveStrategy_backup/Assets/Battle/Battle.unity
+- path: Assets/AddFiles/ScrollUI/ScrollTest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
