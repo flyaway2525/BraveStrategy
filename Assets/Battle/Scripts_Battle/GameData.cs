@@ -10,8 +10,10 @@ public class GameData : MonoBehaviour
     private bool TF = true;
     public bool canMove = false;
     public bool player_Turn = false;
-    public bool enemy_Turn = false;
+    public bool enemy_Turn = false;         
     public void Start() {
+        UIGenerator.instance.AddScrollText("スクロールに追加したよ");
+        UIGenerator.instance.AddInfomationText("1ターン目とか出すよ");
         Debug.Log("赤がプレイヤー、緑がエネミー、青がグランド");
         Debug.Log("赤を動かしてグランドを移動するゲーム");
 
@@ -24,6 +26,8 @@ public class GameData : MonoBehaviour
         }
     }
     public void PreAction() {
+        UIGenerator.instance.AddInfomationText("PreAction");
+        UIGenerator.instance.AddScrollText("PreAction実行");
         //Passiveのルール
         /***
          * passive_First        : キャラクタのステータスを底上げする効果(HP+100とか)
@@ -41,6 +45,7 @@ public class GameData : MonoBehaviour
     public void combat() {
         CanMove(false);
         _ground_Controller.turnPlayer = false;
+        UIGenerator.instance.AddScrollText("戦闘開始");
         StartCoroutine("Enemy_FastSkill");
         _ground_Controller.turnPlayer = true;
         CanMove(true);
@@ -50,24 +55,30 @@ public class GameData : MonoBehaviour
     public IEnumerator Player_Turn() {
         if (canMove) {
             Debug.Log("3");
+            UIGenerator.instance.AddScrollText("敵行動まで3秒");
             yield return new WaitForSeconds(1.0f);
             Debug.Log("2");
+            UIGenerator.instance.AddScrollText("敵行動まで2秒");
             yield return new WaitForSeconds(1.0f);
             Debug.Log("1");
+            UIGenerator.instance.AddScrollText("敵行動まで1秒");
             yield return new WaitForSeconds(1.0f);
             Debug.Log("0");
-            player_Turn = false;
-            //_ground_Controller.Selected_Ground.OnPointerUp();
-            _ground_Controller.turnPlayer = false;
-            Debug.Log("Enemy_Trun");
+            UIGenerator.instance.AddScrollText("敵行動開始");
             StartCoroutine("Enemy_Trun");
         }
     }
     public IEnumerator Enemy_Trun() {
-        foreach(Enemy_Status enemy_script in _targetController.Enemy_Scripts) {
+        player_Turn = false;
+        _ground_Controller.turnPlayer = false;
+        Debug.Log("Enemy_Trun");
+        UIGenerator.instance.AddScrollText("敵のターン開始");
+        foreach (Enemy_Status enemy_script in _targetController.Enemy_Scripts) {
             IEnumerator c = enemy_script.OnTurn();
             StartCoroutine(c);
         }
+        Debug.Log("ここにプレイヤーの移動を待つ処理を入れる必要がある");
+        UIGenerator.instance.AddInfomationText("ターン終了/nエンドフェイズに移行");
         StartCoroutine("Enemy_EndSkill");
         yield return null;
     }

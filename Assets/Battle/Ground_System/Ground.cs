@@ -5,18 +5,18 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public Ground_Controller ground_Controller;        // groundController            ‚«‚á‚ß‚é•û®
-    public Collider collider;
-    public Renderer renderer;
-    public Transform transform;
+    public Collider ground_Collider;
+    public Renderer ground_Renderer;
+    //public Transform transform;
     public Ground position_Ground;
     public GameData gameData; //Œ»İæ‚Á‚Ä‚¢‚éGameData_Object
     //public GameObject
     public virtual void Start() {
-        transform = this.gameObject.GetComponent<Transform>();
+        //transform = this.gameObject.GetComponent<Transform>();
         ground_Controller = transform.parent.parent.gameObject.GetComponent<Ground_Controller>();
         gameData = transform.parent.parent.gameObject.GetComponent<GameData>();
-        collider = GetComponent<Collider>();
-        renderer = GetComponent<Renderer>();
+        ground_Collider = GetComponent<Collider>();
+        ground_Renderer = GetComponent<Renderer>();
 
 
     }

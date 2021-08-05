@@ -15,6 +15,8 @@ public class Enemy_Sample : Enemy_Status
             foreach(Player_Status _player_Status in _targetController.Player_Scripts) {
                 _player_Status.gameObject.AddComponent<Poison>();
                 Debug.Log(_player_Status + " was get poison!");
+                UIGenerator.instance.AddScrollText(_player_Status + "_was_get_poison!");
+                UIGenerator.instance.GeneratPopupUI(this.transform);
             }
         }
         yield return null;

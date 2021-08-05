@@ -29,7 +29,7 @@ public class Ground_Move : MonoBehaviour
                 trigger = false;
                 if (false/*次の移動マスが存在しているなら*/) {
                     //originとtargetを設定しなおして
-                    trigger = true;
+                    //trigger = true;
                 }
             }
         }

@@ -11,7 +11,8 @@ public class A : Player_Status
     public override void passive_First() {
         base.passive_First();
         status.maxhp_add += 50;
-        Debug.Log(gameObject + "maxHP " + 50 + " UP");
+        //Debug.Log(gameObject + "maxHP " + 50 + " UP");
+        UIGenerator.instance.AddScrollText(gameObject + "maxHP" + 50 + "UP");
     }
     public override void OnTurn() {
         Debug.Log(this.gameObject.name + " : your turn!");

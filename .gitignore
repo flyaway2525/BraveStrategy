@@ -49,3 +49,5 @@ Thumbs.db
 
 #python bytecode cache, for some plugins.
 *.pyc
+Assets/UI/Fonts/Mplus1-Black SDF.asset
+Assets/UI/Fonts/Mplus1-Black SDF.asset.meta

@@ -14,9 +14,11 @@ public class SampleCharacter :Player_Status
             if (player_Status.status.type == "Human") {
                 player_Status.status.maxhp_rate = 2;
                 Debug.Log("Human ‚Ì HP2”{" + gameObject);
+                UIGenerator.instance.AddScrollText("Human‚ÌHP2”{" + gameObject);
+                UIGenerator.instance.GeneratPopupUI(gameObject.transform, "Human‚ÌHP2”{");
                 var parent = this.transform;
-                GameObject info = Instantiate(showInfo.text_ShowInfo,Vector3.zero, Quaternion.identity, parent);
-                info.transform.position = parent.transform.position;
+                //GameObject info = Instantiate(showInfo.text_ShowInfo,Vector3.zero, Quaternion.identity, parent);
+                //info.transform.position = parent.transform.position;
             }
         }
 

@@ -6,14 +6,21 @@ using TMPro;
 public class UIFollowTarget : MonoBehaviour {
 	RectTransform rectTransform = null;
 	[SerializeField] Transform target = null; //UIを表示する対象物
-	[SerializeField] TextMeshProUGUI text;
+	[SerializeField] TextMeshProUGUI textMeshProUGUI;
 	[SerializeField] float fadeOutSpeed = 1.0f;
 	[SerializeField] Vector2 goUp;
 	public Vector2 offset;
+	public string textValue;
 
 	void Start() {
 		rectTransform = GetComponent<RectTransform>();
-		text = GetComponent<TextMeshProUGUI>();
+		textMeshProUGUI = GetComponent<TextMeshProUGUI>();
+		if(textValue != null) {
+			textMeshProUGUI.text = textValue;
+        } else {
+			Debug.LogError("TMP textValue missing");
+        }
+		
 		goUp = new Vector2(0.0f,0.0f);
 	}
 
@@ -22,8 +29,8 @@ public class UIFollowTarget : MonoBehaviour {
 			SetTarget(target.transform);
 			rectTransform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, target.position) + offset + goUp;
 			goUp += new Vector2(0.0f, 0.5f);
-			text.color = Color.Lerp(text.color,new Color(1.0f,0.0f,0.0f,0.0f), fadeOutSpeed * Time.deltaTime);
-			if (text.color.a <= 0.1f) {
+			textMeshProUGUI.color = Color.Lerp(textMeshProUGUI.color,new Color(1.0f,0.0f,0.0f,0.0f), fadeOutSpeed * Time.deltaTime);
+			if (textMeshProUGUI.color.a <= 0.1f) {
 				Destroy(gameObject);
 			}
 		} else {
@@ -32,5 +39,12 @@ public class UIFollowTarget : MonoBehaviour {
 	}
 	public void SetTarget(Transform targetTransform) {
 		target = targetTransform;
+    }
+	public void SetTextValue(string _str) {
+		if(textMeshProUGUI != null) {
+			textMeshProUGUI.text = _str;
+        } else {
+			textValue = _str;
+		}
     }
 }

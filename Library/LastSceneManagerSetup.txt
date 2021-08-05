@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/AddFiles/ScrollUI/ScrollTest.unity
+- path: Assets/UI/ScrollUI/ScrollUITest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

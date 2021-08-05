@@ -18,7 +18,9 @@ public class MakePopupUI : MonoBehaviour{
         UIObj.GetComponent<UIFollowTarget>().SetTarget(targetTransform);
     }
     public void PopTest2(Transform _target) {
+        //ターゲットを選択して、それにフォローするポップアップUIを生成する
         GameObject UIObj = Instantiate(textUI, canvas.transform);
         UIObj.GetComponent<UIFollowTarget>().SetTarget(_target);
     }
+    //public void ScrollUI 
 }

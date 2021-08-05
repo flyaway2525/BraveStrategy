@@ -12,7 +12,6 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
     Vector3 _inputPosition;     //タッチし始めのPlayerGroundのPosisionで変更されない
     private int _mobility = 0;
     private float _DEX = 2.0f;
-    private float _Time = 0;//1になったらリセットすること
     private bool testTrigger = true;//いつでも消していい
     [SerializeField] GameObject pt;
     public override void Start() {
@@ -44,7 +43,7 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
                     _inputPosition = pass_grounds.Last().gameObject.transform.position;
                     ground_Controller.Remove_Ground(this);
                     ground_Controller.Set_Ground(this, pass_grounds.Last());
-                    pass_grounds.Last().renderer.material.color = Color.red;
+                    pass_grounds.Last().ground_Renderer.material.color = Color.red;
                 }
             } else { 
                 //Playerの表示位置を1行動での移動距離限界に制限する
@@ -88,7 +87,7 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
       IEnumerable<Ground[]> _turnOn_Ground = ground_Controller.Ground.Where(i => i[1] == null); //何も乗っていないGroundのColliderをtrueにする。
         foreach (Ground[] g in _turnOn_Ground) {
             if (g[0] != null) {
-                g[0].collider.enabled = true;
+                g[0].ground_Collider.enabled = true;
                 //g[0].gameObject.layer = 0;
             }
         }
@@ -102,7 +101,7 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
         //Collider.enabled = true;
         gameObject.layer = 0;
         foreach (Ground ground in ground_Controller.Normal_Grounds) {
-            ground.collider.enabled = false; 
+            ground.ground_Collider.enabled = false; 
             //ground.gameObject.layer = 2;
         }
         if (pass_grounds.Count > 0) {     //指を話したとき移動してたら移動、してなかったら経路をリセットして(初めにリセットするのでリセットしない)初期位置に
@@ -110,7 +109,7 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
         }
         foreach (Ground _pass_grounds in pass_grounds) {
             Debug.Log(_pass_grounds);
-            _pass_grounds.renderer.material.color = Color.blue;
+            _pass_grounds.ground_Renderer.material.color = Color.blue;
         }
     }
 
