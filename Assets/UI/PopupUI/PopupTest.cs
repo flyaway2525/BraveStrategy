@@ -8,7 +8,8 @@ public class PopupTest : MonoBehaviour{
     }
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            MakePopupUI.instance.PopTest2(transform);
+            //MakePopupUI.instance.PopTest2(transform);
+            UIGenerator.instance.GeneratPopupUI(transform, "aaa");
         }
     }
 }

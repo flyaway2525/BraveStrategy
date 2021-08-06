@@ -30,7 +30,7 @@ IL2CPP_EXTERN_C_END
 
 
 // System.ValueType
-struct  ValueType_tDBF999C1B75C48C68621878250DBF6CDBCF51E52  : public RuntimeObject
+struct ValueType_tDBF999C1B75C48C68621878250DBF6CDBCF51E52  : public RuntimeObject
 {
 public:
 
@@ -47,7 +47,7 @@ struct ValueType_tDBF999C1B75C48C68621878250DBF6CDBCF51E52_marshaled_com
 };
 
 // System.IntPtr
-struct  IntPtr_t 
+struct IntPtr_t 
 {
 public:
 	// System.Void* System.IntPtr::m_value
@@ -81,7 +81,7 @@ public:
 
 
 // System.Void
-struct  Void_t700C6383A2A510C2CF4DD86DABD5CA9FF70ADAC5 
+struct Void_t700C6383A2A510C2CF4DD86DABD5CA9FF70ADAC5 
 {
 public:
 	union
@@ -100,10 +100,16 @@ public:
 #endif
 
 extern "C" void DEFAULT_CALL ReversePInvokeWrapper_OSSpecificSynchronizationContext_InvocationEntry_m0045E44F7E960D6B4A864D5206D4116249C09BB0(intptr_t ___arg0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_iOSNotificationsWrapper_AuthorizationRequestReceived_m90390A23265A5C3DA79A082E0466D6519C4FF424(intptr_t ___authRequestDataPtr0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_iOSNotificationsWrapper_NotificationReceived_mC235492A257B60D1DF1316B5855BF3713E04DD43(intptr_t ___notificationDataPtr0);
+extern "C" void DEFAULT_CALL ReversePInvokeWrapper_iOSNotificationsWrapper_RemoteNotificationReceived_m277C3CFFA45FCD3514C6D8F9A422F09BDEA4F153(intptr_t ___notificationDataPtr0);
 
 
 IL2CPP_EXTERN_C const Il2CppMethodPointer g_ReversePInvokeWrapperPointers[];
-const Il2CppMethodPointer g_ReversePInvokeWrapperPointers[1] = 
+const Il2CppMethodPointer g_ReversePInvokeWrapperPointers[4] = 
 {
 	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_OSSpecificSynchronizationContext_InvocationEntry_m0045E44F7E960D6B4A864D5206D4116249C09BB0),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_iOSNotificationsWrapper_AuthorizationRequestReceived_m90390A23265A5C3DA79A082E0466D6519C4FF424),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_iOSNotificationsWrapper_NotificationReceived_mC235492A257B60D1DF1316B5855BF3713E04DD43),
+	reinterpret_cast<Il2CppMethodPointer>(ReversePInvokeWrapper_iOSNotificationsWrapper_RemoteNotificationReceived_m277C3CFFA45FCD3514C6D8F9A422F09BDEA4F153),
 };

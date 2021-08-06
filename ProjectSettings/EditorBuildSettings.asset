@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Battle/Battle.unity
     guid: 6379d18419e3d66418527eb9ba6d7ccf
+  - enabled: 1
+    path: Assets/Notification/NotificationTest.unity
+    guid: f7955ed9f9e06a74dbb37f0280d7231f
   m_configObjects: {}

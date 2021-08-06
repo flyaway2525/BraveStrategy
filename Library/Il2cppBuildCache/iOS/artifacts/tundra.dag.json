@@ -19,37 +19,43 @@
       "DebugActionIndex": 0
     },
     {
-      "Annotation": "Il2Cpp D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/il2cppOutput",
-      "Action": "\"C:\\Program Files\\Unity\\2020.2.7f1\\Editor\\Data\\il2cpp/build/deploy/netcoreapp3.1/il2cpp.exe\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp --additional-cpp=D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"C:/Program Files/Unity/2020.2.7f1/Editor/Data/Tools/MapFileParser/MapFileParser.exe\" --directory=D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed --generatedcppdir=D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/il2cppOutput",
+      "Annotation": "Il2Cpp D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/il2cppOutput",
+      "Action": "\"C:\\Program Files\\Unity\\2020.3.10f1\\Editor\\Data\\il2cpp/build/deploy/netcoreapp3.1/il2cpp.exe\" --convert-to-cpp --emit-null-checks --enable-array-bounds-check --dotnetprofile=\"unityaot\" --additional-cpp=D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp --additional-cpp=D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp --incremental-g-c-time-slice=3 --avoid-dynamic-library-copy --profiler-report --map-file-parser=\"C:/Program Files/Unity/2020.3.10f1/Editor/Data/Tools/MapFileParser/MapFileParser.exe\" --directory=D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed --generatedcppdir=D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/il2cppOutput",
       "Inputs": [
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/Mono.Security.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/mscorlib.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/System.Configuration.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/System.Core.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/System.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/System.Xml.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
-        "D:/GitHub/RPG_Battle/test1/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll"
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/Assembly-CSharp-firstpass.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/Assembly-CSharp.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/DOTween.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/Mono.Security.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/mscorlib.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/System.Configuration.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/System.Core.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/System.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/System.Xml.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/Unity.Notifications.iOS.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/Unity.TextMeshPro.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.AnimationModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.AudioModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.CoreModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.GameCenterModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.GridModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.IMGUIModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.InputLegacyModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.ParticleSystemModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.Physics2DModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.PhysicsModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.SharedInternalsModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.SpriteShapeModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.TextCoreModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.TextRenderingModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.TilemapModule.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll",
+        "D:/SourceTree/BraveStrategy/Temp/StagingArea/Data/Managed/UnityEngine.UIModule.dll"
       ],
       "Outputs": [],
       "TargetDirectories": [
-        "D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/il2cppOutput"
+        "D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/il2cppOutput"
       ],
       "PassIndex": 0,
       "Deps": [],
@@ -60,13 +66,13 @@
       "DebugActionIndex": 1
     },
     {
-      "Annotation": "Copy Additional C++ File D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
-      "Action": "copy \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityClassRegistration.cpp\" \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" && copy /b \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" +,, \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp",
+      "Action": "copy \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityClassRegistration.cpp\" \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" && copy /b \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" +,, \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityClassRegistration.cpp\" ",
       "Inputs": [
-        "D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
+        "D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityClassRegistration.cpp"
       ],
       "Outputs": [
-        "D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
+        "D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityClassRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,
@@ -80,13 +86,13 @@
       "DebugActionIndex": 2
     },
     {
-      "Annotation": "Copy Additional C++ File D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
-      "Action": "copy \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityICallRegistration.cpp\" \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" && copy /b \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" +,, \"D:\\GitHub\\RPG_Battle\\test1\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" ",
+      "Annotation": "Copy Additional C++ File D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp",
+      "Action": "copy \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\additionalCppFiles\\UnityICallRegistration.cpp\" \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" && copy /b \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" +,, \"D:\\SourceTree\\BraveStrategy\\Library\\Il2cppBuildCache\\iOS\\il2cppOutput\\UnityICallRegistration.cpp\" ",
       "Inputs": [
-        "D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
+        "D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/additionalCppFiles/UnityICallRegistration.cpp"
       ],
       "Outputs": [
-        "D:/GitHub/RPG_Battle/test1/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
+        "D:/SourceTree/BraveStrategy/Library/Il2cppBuildCache/iOS/il2cppOutput/UnityICallRegistration.cpp"
       ],
       "TargetDirectories": [],
       "PassIndex": 0,

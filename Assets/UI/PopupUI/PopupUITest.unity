@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\u30DD\u30C3\u30D7\u30A2\u30C3\u30D7\u30C6\u30B9\u30C8"
 --- !u!222 &207687000
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -316,10 +316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 720, y: 1280}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -404,7 +404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -300, y: -100}
+  m_AnchoredPosition: {x: -300, y: -219}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &988978937
@@ -508,6 +508,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8485449850901729946, guid: 14ec54fc51c541844aec03d0ffb50887, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 585271106}
     - target: {fileID: 8824725203108867256, guid: 14ec54fc51c541844aec03d0ffb50887, type: 3}
       propertyPath: canvas
       value: 

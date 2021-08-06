@@ -231,8 +231,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2248751686781214071}
   m_HandleRect: {fileID: 2248751686781214064}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.40124375
+  m_Value: 1
+  m_Size: 0.48363125
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -531,6 +531,7 @@ MonoBehaviour:
   maxLine: 30
   scrollbarValue: 3.54
   contents: []
+  scrollRect: {fileID: 0}
 --- !u!1 &6771139859796339055
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,8 +599,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: aaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaaaaaaaa\naaaaaa
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d31b37a7e6142d34d8ac9a0a6087e2c5, type: 2}
-  m_sharedMaterial: {fileID: 1914621932632904950, guid: d31b37a7e6142d34d8ac9a0a6087e2c5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 53ef4744f1fc7b64489d2fbc8db7c224, type: 2}
+  m_sharedMaterial: {fileID: 8757934096733908731, guid: 53ef4744f1fc7b64489d2fbc8db7c224, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
