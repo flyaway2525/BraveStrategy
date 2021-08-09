@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Notification/NotificationTest.unity
+- path: Assets/Data/SaveData/DataTest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

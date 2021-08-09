@@ -10,14 +10,14 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
     public bool onLastGround = false;
     [SerializeField] Ground _inputFirstGround; //配置データ受け渡し場所(今は規定値)
     Vector3 _inputPosition;     //タッチし始めのPlayerGroundのPosisionで変更されない
-    private int _mobility = 0;
+    public Player_Status player_Status;
     private float _DEX = 2.0f;
     private bool testTrigger = true;//いつでも消していい
     [SerializeField] GameObject pt;
     public override void Start() {
         base.Start();
         pt = (GameObject)Resources.Load("PlayerParticle");
-        _mobility = GetComponent<Player_Status>().Mobility;
+        player_Status = GetComponent<Player_Status>();
         ground_Controller.Player_Ground = this;
         if (_inputFirstGround != null) {            //配置データ受け渡し場所(今は規定値)
             pass_grounds.Clear();//Debug.Log(string.Join(",",pass_grounds) + " : クリアしたので何もないはず");
@@ -29,34 +29,36 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
         }
     }
     void Update() {// マウスが押下されている時、オブジェクトを動かす
-        if (_isPushed) {
-            Vector3 inputTouch;  //実際に触っている場所
-            Vector3 objectPosition; //プレイヤーがいるべき場所
-            inputTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            inputTouch.z = 0;
-            _inputPosition.z = 0;
-            float d = Vector3.Distance(_inputPosition, inputTouch);
-            if (d < 1.3f) { //Transform.position = objectPosition;     //移動のコードを組むので一旦OFF 
-                objectPosition = inputTouch;
-                if (position_Ground != null && position_Ground != pass_grounds.Last() && pass_grounds.Count <= _mobility) { //Groundオブジェクトに乗った時の処理
-                    pass_grounds.Add(position_Ground);
-                    _inputPosition = pass_grounds.Last().gameObject.transform.position;
-                    ground_Controller.Remove_Ground(this);
-                    ground_Controller.Set_Ground(this, pass_grounds.Last());
-                    pass_grounds.Last().ground_Renderer.material.color = Color.red;
+        if (player_Status.status.life) {
+            if (_isPushed) {
+                Vector3 inputTouch;  //実際に触っている場所
+                Vector3 objectPosition; //プレイヤーがいるべき場所
+                inputTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                inputTouch.z = 0;
+                _inputPosition.z = 0;
+                float d = Vector3.Distance(_inputPosition, inputTouch);
+                if (d < 1.3f) { //Transform.position = objectPosition;     //移動のコードを組むので一旦OFF 
+                    objectPosition = inputTouch;
+                    if (position_Ground != null && position_Ground != pass_grounds.Last() && pass_grounds.Count <= player_Status.Mobility) { //Groundオブジェクトに乗った時の処理
+                        pass_grounds.Add(position_Ground);
+                        _inputPosition = pass_grounds.Last().gameObject.transform.position;
+                        ground_Controller.Remove_Ground(this);
+                        ground_Controller.Set_Ground(this, pass_grounds.Last());
+                        pass_grounds.Last().ground_Renderer.material.color = Color.red;
+                    }
+                } else {
+                    //Playerの表示位置を1行動での移動距離限界に制限する
+                    //使用するとPlayerの位置が変わるため現在は廃止、移動距離限界の可視化のために今後必要なのでとっておく
+                    /*
+                    objectPosition = _inputPosition + (inputTouch - _inputPosition) * 1.3f / d;
+                    Transform.position = objectPosition;
+                    */
                 }
-            } else { 
-                //Playerの表示位置を1行動での移動距離限界に制限する
-                //使用するとPlayerの位置が変わるため現在は廃止、移動距離限界の可視化のために今後必要なのでとっておく
-                /*
-                objectPosition = _inputPosition + (inputTouch - _inputPosition) * 1.3f / d;
-                Transform.position = objectPosition;
-                */
+                if (pass_grounds.Count >= 2 && !gameData.player_Turn) {//時が進む
+                    gameData.player_Turn = true;
+                    gameData.StartCoroutine("Player_Turn");//コルーチンなのでこれ以下に処理を書くときは順番に注意
+                }
             }
-            if (pass_grounds.Count >= 2 && !gameData.player_Turn) {//時が進む
-                gameData.player_Turn = true;
-                gameData.StartCoroutine("Player_Turn");//コルーチンなのでこれ以下に処理を書くときは順番に注意
-            }                                                             
         }
         if (pass_grounds.Count >= 1) {   //Passが増えた時に移動する処理              
             if (testTrigger) {
@@ -79,16 +81,18 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
     // クリック検知時、コールバックされる関数
     public void OnPointerClick(PointerEventData eventData) { }
     public void OnPointerDown(PointerEventData eventData) {//触った時
-        _isPushed = true;
-        _inputPosition = pass_grounds.Last().transform.position;
-        //Collider.enabled = false;//触ってるキャラのColliderをOFF
-        gameObject.layer = 2;
-        ground_Controller.Selected_Ground = this;//触っているPlayerGround
-      IEnumerable<Ground[]> _turnOn_Ground = ground_Controller.Ground.Where(i => i[1] == null); //何も乗っていないGroundのColliderをtrueにする。
-        foreach (Ground[] g in _turnOn_Ground) {
-            if (g[0] != null) {
-                g[0].ground_Collider.enabled = true;
-                //g[0].gameObject.layer = 0;
+        if (player_Status.status.life) {
+            _isPushed = true;
+            _inputPosition = pass_grounds.Last().transform.position;
+            //Collider.enabled = false;//触ってるキャラのColliderをOFF
+            gameObject.layer = 2;
+            ground_Controller.Selected_Ground = this;//触っているPlayerGround
+            IEnumerable<Ground[]> _turnOn_Ground = ground_Controller.Ground.Where(i => i[1] == null); //何も乗っていないGroundのColliderをtrueにする。
+            foreach (Ground[] g in _turnOn_Ground) {
+                if (g[0] != null) {
+                    g[0].ground_Collider.enabled = true;
+                    //g[0].gameObject.layer = 0;
+                }
             }
         }
     }
@@ -108,7 +112,7 @@ public class Player_Ground : Ground, IPointerClickHandler, IPointerDownHandler, 
             SetPos(pass_grounds.Last());
         }
         foreach (Ground _pass_grounds in pass_grounds) {
-            Debug.Log(_pass_grounds);
+            //Debug.Log(_pass_grounds);
             _pass_grounds.ground_Renderer.material.color = Color.blue;
         }
     }

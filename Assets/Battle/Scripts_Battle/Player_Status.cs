@@ -55,6 +55,9 @@ public class Player_Status : All_Status
 
     public virtual void OnTurn() {
     }
+    public void Dead() {
+        status.life = false;
+    }
 
 
     public int Mobility { get { return _mobility; } }

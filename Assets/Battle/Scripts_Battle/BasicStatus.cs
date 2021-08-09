@@ -14,6 +14,7 @@ public class BasicStatus : MonoBehaviour {
     [SerializeField] int _def;
     [SerializeField] int _def_add;
     [SerializeField] float _def_rate = 1.0f;
+    [SerializeField] bool _life = true;
 
 
     //最終的なスキルの値を入れる。
@@ -133,7 +134,19 @@ public class BasicStatus : MonoBehaviour {
             return _def_rate;
         }
     }
-    private void Dead() {
-        Debug.Log(this.gameObject + " is DEAD!");
+    public bool life {
+        set {
+            _life = value;
+        }
+        get {
+            return _life;
+        }
     }
+    public void Dead() {
+        life = false;
+        this.gameObject.GetComponent<Renderer>().material.color = new Color(0.5f,0.2f,0.2f,1f);
+        Debug.Log(this.gameObject + " is DEAD!");
+
+    }
+
 }

@@ -84,4 +84,17 @@ public class Ground_Controller : MonoBehaviour
     public Player_Ground Selected_Ground { set { _selected_Ground = value; } get { return _selected_Ground; } }
 
     //setとaddメソッドを用意する方が見方がいい
+    public bool CheckPlayersLife() {
+        bool _life = false;
+        foreach (Player_Ground item in _player_Grounds) {
+            if (item.player_Status.status.life) {
+                _life = true;
+                break;
+            }
+        }
+        if (!_life) {
+            Debug.Log("GAMEOVER");
+        }
+        return (_life);
+    }
 }
