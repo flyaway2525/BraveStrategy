@@ -5,6 +5,7 @@ using System.Linq;
 
 public class Ground_Controller : MonoBehaviour
 {
+    public static Ground_Controller Instance;
     [SerializeField] List<Player_Ground> _player_Grounds;
     [SerializeField] List<Enemy_Ground> _enemy_Grounds;
     [SerializeField] List<Normal_Ground> _normal_Grounds;
@@ -21,6 +22,9 @@ public class Ground_Controller : MonoBehaviour
     [SerializeField] Player_Ground _selected_Ground;
     public Collider touchOffCollider;//触ることを禁止するためのEvent用Collider
     public bool turnPlayer = false; //True で PlayerTurn False で EnemyTurn
+    private void Awake() {
+        Instance = this;
+    }
     private void setLists<T>(List<T> gameObjects, List<T> _gameObjects) {
         foreach (T gameObject in gameObjects) {
             setList(gameObject, _gameObjects);

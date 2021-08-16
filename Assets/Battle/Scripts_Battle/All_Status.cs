@@ -16,7 +16,7 @@ public class All_Status : MonoBehaviour
      *                            | Item_Status        | それぞれのアイテムステータス
      *  TargetControllerにALLOBJECTSのGameObjectを入れておくことで場にあるGameObjectの役割を識別する(これってTagで良くないか?)                            
      ***/
-    public void Start() {
+    public void Awake() {
         if(showInfo == null) {
             showInfo = Resources.Load("ShowInfo") as SO_ShowInfo;
             if(showInfo == null) {

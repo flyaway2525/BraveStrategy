@@ -146,6 +146,7 @@ public class BasicStatus : MonoBehaviour {
         life = false;
         this.gameObject.GetComponent<Renderer>().material.color = new Color(0.5f,0.2f,0.2f,1f);
         Debug.Log(this.gameObject + " is DEAD!");
+        Ground_Controller.Instance.CheckPlayersLife();
 
     }
 

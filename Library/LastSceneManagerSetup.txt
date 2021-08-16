@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Data/SaveData/DataTest.unity
+- path: Assets/Battle/Battle.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

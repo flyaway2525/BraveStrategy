@@ -1,24 +1,68 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//ä»¥ä¸‹ã®è¨˜äº‹(ã‚³ãƒ«ãƒ¼ãƒãƒ³ã®çµæœã‚’å—ã‘å–ã‚‹)
+//https://tsubakit1.hateblo.jp/entry/2015/04/06/060608
 public class GameData : MonoBehaviour
 {
-
+    public enum TURN {
+        STANDBY_PHASE,//ã‚²ãƒ¼ãƒ æ¯ã«åˆã‚ã«å®Ÿè¡Œã•ã‚Œã‚‹
+        FAST_PHASE,//FastSkill()ã®ãƒ•ã‚§ã‚¤ã‚ºã€ã‚¿ãƒ¼ãƒ³ã®åˆã‚ã«1å›å®Ÿè¡Œã•ã‚Œã‚‹
+        PLAYER_PHASE,//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¿ãƒ¼ãƒ³
+        ENEMY_PHASE,//æ•µã®ã‚¿ãƒ¼ãƒ³
+        END_PHASE,//EndSkill()ã®ãƒ•ã‚§ã‚¤ã‚ºã€ã‚¿ãƒ¼ãƒ³ã®çµ‚ã‚ã‚Šã«1å›å®Ÿè¡Œã•ã‚Œã‚‹
+        CLEAR_PHASE,//ã‚²ãƒ¼ãƒ ã®ã‚¯ãƒªã‚¢æ™‚
+        GAMEOVER_PHASE//ã‚²ãƒ¼ãƒ å¤±æ•—æ™‚
+            //é¢ã‚¯ãƒªã‚¢ã®ãƒ•ã‚§ã‚¤ã‚ºã‚‚å¿…è¦ã ãŒã€ã¨ã‚Šã‚ãˆãšæœªå®Ÿè£…
+    }
+    public TURN turn = TURN.STANDBY_PHASE;
     [SerializeField] private TargetController _targetController;
     [SerializeField] Ground_Controller _ground_Controller;
     private bool TF = true;
     public bool canMove = false;
     public bool player_Turn = false;
-    public bool enemy_Turn = false;         
+    public bool enemy_Turn = false;
+    private bool _activeCoroutine = false;
     public void Start() {
-        UIGenerator.instance.AddScrollText("ƒXƒNƒ[ƒ‹‚É’Ç‰Á‚µ‚½‚æ");
-        UIGenerator.instance.AddInfomationText("1ƒ^[ƒ“–Ú‚Æ‚©o‚·‚æ");
-        Debug.Log("Ô‚ªƒvƒŒƒCƒ„[A—Î‚ªƒGƒlƒ~[AÂ‚ªƒOƒ‰ƒ“ƒh");
-        Debug.Log("Ô‚ğ“®‚©‚µ‚ÄƒOƒ‰ƒ“ƒh‚ğˆÚ“®‚·‚éƒQ[ƒ€");
+        UIGenerator.instance.AddScrollText("ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã«è¿½åŠ ã—ãŸã‚ˆ");
+        UIGenerator.instance.AddInfomationText("1ã‚¿ãƒ¼ãƒ³ç›®ã¨ã‹å‡ºã™ã‚ˆ");
+        Debug.Log("èµ¤ãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã€ç·‘ãŒã‚¨ãƒãƒŸãƒ¼ã€é’ãŒã‚°ãƒ©ãƒ³ãƒ‰");
+        Debug.Log("èµ¤ã‚’å‹•ã‹ã—ã¦ã‚°ãƒ©ãƒ³ãƒ‰ã‚’ç§»å‹•ã™ã‚‹ã‚²ãƒ¼ãƒ ");
 
     }
-    public void Update() {    //‘S‚Ä‚ÌStart‚ªI‚í‚Á‚ÄUpdate‚Ìƒ^ƒCƒ~ƒ“ƒO‚É‚È‚Á‚½‚çcombat‚ğŠJn‚·‚é
+    public void Update() {    //å…¨ã¦ã®StartãŒçµ‚ã‚ã£ã¦Updateã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã«ãªã£ãŸã‚‰combatã‚’é–‹å§‹ã™ã‚‹
+        switch (turn) {
+            case TURN.STANDBY_PHASE:
+                if (canMove) { CanMove(false); }
+                PreAction();
+                turn = TURN.PLAYER_PHASE;
+                    break;
+            case TURN.FAST_PHASE:
+                if (canMove) { CanMove(false); }
+                UIGenerator.instance.AddScrollText("Fast_Phase");
+                Coroutine coroutine = StartCoroutine(Enemy_FastSkill());   //ã»ã‚“ã¨ã¯å‘³æ–¹ã®FastSkillã‚‚å¿…è¦
+                if (!_activeCoroutine) {
+                    UIGenerator.instance.AddScrollText("Fast_Phase_FIN");
+                    turn = TURN.PLAYER_PHASE;
+                }
+                break;
+            case TURN.PLAYER_PHASE:
+                if (!canMove) { CanMove(true); }
+                //Player_Turn()ã®å®Ÿè¡Œã®å¾…æ©Ÿ
+                break;
+            case TURN.ENEMY_PHASE:
+                break;
+            case TURN.END_PHASE:
+                break;
+            case TURN.CLEAR_PHASE:
+                break;
+            case TURN.GAMEOVER_PHASE:
+                break;
+            default:
+                Debug.LogError("TURNãŒç„¡åŠ¹ãªå€¤ã§ã™");
+                break;
+        }
         if (TF) {
             TF = false;
             PreAction();
@@ -26,83 +70,97 @@ public class GameData : MonoBehaviour
         }
     }
     public void PreAction() {
+        if (_activeCoroutine) { Debug.LogError("ã‚³ãƒ«ãƒ¼ãƒãƒ³ã®çµ‚äº†ã‚’å¾…ãŸãšã«æ¬¡ã®ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å‹•ã‹ã—ã¦ã„ã¾ã™"); }
+        _activeCoroutine = true;
         UIGenerator.instance.AddInfomationText("PreAction");
-        UIGenerator.instance.AddScrollText("PreActionÀs");
-        //Passive‚Ìƒ‹[ƒ‹
+        UIGenerator.instance.AddScrollText("PreActionå®Ÿè¡Œ");
+        //Passiveã®ãƒ«ãƒ¼ãƒ«
         /***
-         * passive_First        : ƒLƒƒƒ‰ƒNƒ^‚ÌƒXƒe[ƒ^ƒX‚ğ’êã‚°‚·‚éŒø‰Ê(HP+100‚Æ‚©)
-         * passice_Second    : ƒLƒƒƒ‰ƒNƒ^‚ÌƒXƒe[ƒ^ƒX”{—¦‚Ì•Ï‰»   
-         * passice_Third       : ƒLƒƒƒ‰ƒNƒ^‚ÌƒXƒe[ƒ^ƒX”{—¦”½‰f          
+         * passive_First        : ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’åº•ä¸Šã’ã™ã‚‹åŠ¹æœ(HP+100ã¨ã‹)
+         * passice_Second    : ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€ç‡ã®å¤‰åŒ–   
+         * passice_Third       : ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€ç‡åæ˜           
          * ***/
-        //TargetController‚Ì‰Šú‰» : _allGameObjects‚É‘S‚Ä‚ÌChara‚ÆItem‚ª‘¶İ‚·‚é•K—v‚ª‚ ‚é(—vC³) 
-        //ƒpƒbƒVƒuƒXƒLƒ‹‚ğ”­“®‚³‚¹‚é(‚±‚ê‚ÍƒpƒbƒVƒu‚ª•Ï‰»‚·‚é‚½‚Ñ‚És‚í‚ê‚é‚Æ—Ç‚¢)
+        //TargetControllerã®åˆæœŸåŒ– : _allGameObjectsã«å…¨ã¦ã®Charaã¨ItemãŒå­˜åœ¨ã™ã‚‹å¿…è¦ãŒã‚ã‚‹(è¦ä¿®æ­£) 
+        //ãƒ‘ãƒƒã‚·ãƒ–ã‚¹ã‚­ãƒ«ã‚’ç™ºå‹•ã•ã›ã‚‹(ã“ã‚Œã¯ãƒ‘ãƒƒã‚·ãƒ–ãŒå¤‰åŒ–ã™ã‚‹ãŸã³ã«è¡Œã‚ã‚Œã‚‹ã¨è‰¯ã„)
         List<All_Status> _allStatus = new List<All_Status>();
         _allStatus = _targetController.Initialize_TargetController();
         foreach (All_Status _script in _allStatus) { _script.passive_First(); }
         foreach (All_Status _script in _allStatus) { _script.passive_Second(); }
         foreach (All_Status _script in _allStatus) { _script.passive_Third(); }
+        _activeCoroutine = false;
     }
     public void combat() {
         CanMove(false);
         _ground_Controller.turnPlayer = false;
-        UIGenerator.instance.AddScrollText("í“¬ŠJn");
+        UIGenerator.instance.AddScrollText("æˆ¦é—˜é–‹å§‹");
         StartCoroutine("Enemy_FastSkill");
         _ground_Controller.turnPlayer = true;
         CanMove(true);
-        //playerTrun‚ªn‚Ü‚é      ğŒ@Player‚ğG‚Á‚½‚ç
+        //playerTrunãŒå§‹ã¾ã‚‹      æ¡ä»¶ã€€Playerã‚’è§¦ã£ãŸã‚‰
 
     }
     public IEnumerator Player_Turn() {
+        if (_activeCoroutine) { Debug.LogError("ã‚³ãƒ«ãƒ¼ãƒãƒ³ã®çµ‚äº†ã‚’å¾…ãŸãšã«æ¬¡ã®ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å‹•ã‹ã—ã¦ã„ã¾ã™"); }
+        _activeCoroutine = true;
         if (canMove) {
             Debug.Log("3");
-            UIGenerator.instance.AddScrollText("“Gs“®‚Ü‚Å3•b");
+            UIGenerator.instance.AddScrollText("æ•µè¡Œå‹•ã¾ã§3ç§’");
             yield return new WaitForSeconds(1.0f);
             Debug.Log("2");
-            UIGenerator.instance.AddScrollText("“Gs“®‚Ü‚Å2•b");
+            UIGenerator.instance.AddScrollText("æ•µè¡Œå‹•ã¾ã§2ç§’");
             yield return new WaitForSeconds(1.0f);
             Debug.Log("1");
-            UIGenerator.instance.AddScrollText("“Gs“®‚Ü‚Å1•b");
+            UIGenerator.instance.AddScrollText("æ•µè¡Œå‹•ã¾ã§1ç§’");
             yield return new WaitForSeconds(1.0f);
             Debug.Log("0");
-            UIGenerator.instance.AddScrollText("“Gs“®ŠJn");
-            StartCoroutine("Enemy_Trun");
+            UIGenerator.instance.AddScrollText("æ•µè¡Œå‹•é–‹å§‹");
+            _activeCoroutine = false;
         }
+        turn = TURN.ENEMY_PHASE;
     }
     public IEnumerator Enemy_Trun() {
+        if (_activeCoroutine) { Debug.LogError("ã‚³ãƒ«ãƒ¼ãƒãƒ³ã®çµ‚äº†ã‚’å¾…ãŸãšã«æ¬¡ã®ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’å‹•ã‹ã—ã¦ã„ã¾ã™"); }
+        _activeCoroutine = true;
         player_Turn = false;
         _ground_Controller.turnPlayer = false;
         Debug.Log("Enemy_Trun");
-        UIGenerator.instance.AddScrollText("“G‚Ìƒ^[ƒ“ŠJn");
+        UIGenerator.instance.AddScrollText("æ•µã®ã‚¿ãƒ¼ãƒ³é–‹å§‹");
+
+        List<Coroutine> cList = new List<Coroutine>();
         foreach (Enemy_Status enemy_script in _targetController.Enemy_Scripts) {
-            IEnumerator c = enemy_script.OnTurn();
-            StartCoroutine(c);
+            IEnumerator ie = enemy_script.OnTurn();
+            cList.Add(StartCoroutine(ie));
         }
-        Debug.Log("‚±‚±‚ÉƒvƒŒƒCƒ„[‚ÌˆÚ“®‚ğ‘Ò‚Âˆ—‚ğ“ü‚ê‚é•K—v‚ª‚ ‚é");
-        UIGenerator.instance.AddInfomationText("ƒ^[ƒ“I—¹/nƒGƒ“ƒhƒtƒFƒCƒY‚ÉˆÚs");
+        foreach(Coroutine c in cList) {yield return c;}
+
+        Debug.Log("ã“ã“ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•ã‚’å¾…ã¤å‡¦ç†ã‚’å…¥ã‚Œã‚‹å¿…è¦ãŒã‚ã‚‹");
+        UIGenerator.instance.AddInfomationText("ã‚¿ãƒ¼ãƒ³çµ‚äº†/nã‚¨ãƒ³ãƒ‰ãƒ•ã‚§ã‚¤ã‚ºã«ç§»è¡Œ");
         StartCoroutine("Enemy_EndSkill");
+        _activeCoroutine = false;
         yield return null;
     }
     public IEnumerator Enemy_FastSkill() {
+        List<Coroutine> cList = new List<Coroutine>();
         foreach (Enemy_Status enemy_script in _targetController.Enemy_Scripts) {
-            IEnumerator c = enemy_script.FastSkill();
-            StartCoroutine(c);
+            IEnumerator ie = enemy_script.FastSkill();
+            cList.Add(StartCoroutine(ie));
         }
+        foreach (Coroutine c in cList) { yield return c; }
         yield return null;
     }
-    public IEnumerator Enemy_EndSkill() {    
-        CanMove(false);
+    public IEnumerator Enemy_EndSkill() {
+        List<Coroutine> cList = new List<Coroutine>();
         foreach (Enemy_Status enemy_script in _targetController.Enemy_Scripts) {
-            IEnumerator c = enemy_script.EndSkill();
-            StartCoroutine(c);
+            IEnumerator ie = enemy_script.EndSkill();
+            cList.Add(StartCoroutine(ie));
         }
-        CanMove(true);
+        foreach (Coroutine c in cList) { yield return c; }
         yield return null;
     }
-
     public void CanMove(bool TF) {
         _ground_Controller.touchOffCollider.enabled = !TF;
         if (!TF && _ground_Controller.Selected_Ground) {
-            _ground_Controller.Selected_Ground.OnPointerUp();//‹­§“I‚Éƒ^ƒbƒ`‚ğ‰ğœ
+            _ground_Controller.Selected_Ground.OnPointerUp();//å¼·åˆ¶çš„ã«ã‚¿ãƒƒãƒã‚’è§£é™¤
         }
         canMove = TF;
     }

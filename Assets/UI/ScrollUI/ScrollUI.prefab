@@ -531,7 +531,7 @@ MonoBehaviour:
   maxLine: 30
   scrollbarValue: 3.54
   contents: []
-  scrollRect: {fileID: 0}
+  scrollRect: {fileID: 2248751687751650717}
 --- !u!1 &6771139859796339055
 GameObject:
   m_ObjectHideFlags: 0
